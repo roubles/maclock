@@ -2,15 +2,15 @@
 
 A simple bash script to lock your macs from the command line. 
 
-By default it will just launch the screen saver, but it can also mute the audio and put the display to sleep.
+By default maclock will just launch the screen saver, but it can also mute the audio and put the display to sleep.
 
 ```
-Usage: maclock [--mute] [--display] [--all]
+Usage: maclock [-m] [-d] [-q] [-a]
 
-       --mute    : mute the audio
-       --display : sleep the display
-       --quiet   : no output
-       --all     : --mute and --display
+       -m, --mute    : mute the audio
+       -d, --display : sleep the display
+       -q, --quiet   : no output
+       -a, --all     : --mute and --display
 ```
 
 ## Install
@@ -36,17 +36,24 @@ $ maclock
 ### Option 2 - Launch Screen Saver and mute audio
 ```
 $ maclock --mute
+OR
+$ maclock -m
 ```
 
 ### Option 3 - Launch Screen Saver and sleep display
 ```
 $ maclock --display
+OR
+$ maclock -d
 ```
 
 ### Option 4 - Launch Screen Saver and all of the above
 ```
 $ maclock --all
+OR
+$ maclock -a
 ```
+
 
 ## Uninstall
 ```
