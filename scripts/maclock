@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+printusage () {
+    echo "Usage: maclock [--mute] [--display] [--all]"
+    echo ""
+    echo "       --mute    : mute the audio"
+    echo "       --display : sleep the display"
+    echo "       --all     : --mute and --display"
+}
+
+for i in "$@"
+do
+case $i in
+    --help)
+    printusage
+    exit 1
+    ;;
+    --all)
+    ALL="YES"
+    shift
+    ;;
+    --display)
+    SLEEP_DISPLAY="YES"
+    shift
+    ;;
+    --mute)
+    MUTE="YES"
+    shift
+    ;;
+    *)
+    printusage
+    exit 1
+    ;;
+esac
+done
+
+# Launch screensaver
+open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app
+
+# Mute the audio
+if [[ "$ALL" == "YES" ]] || [[ "$MUTE" == "YES" ]] ; then
+    echo "Muting..."
+    osascript -e "set Volume 0"; osascript -e "get volume settings"
+fi
+
+# Sleep the display
+if [[ "$ALL" == "YES" ]] || [[ "$SLEEP_DISPLAY" == "YES" ]] ; then
+    echo "Display sleep..."
+    pmset displaysleepnow
+fi
+
+exit 0
