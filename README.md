@@ -70,9 +70,9 @@ Or, if you like to use the trackpad or mouse, you can use Hot Corners.
 
 Call me oldschool, but I like the command line. The commands that this script essentially encapsulates are:
 ```
-open -a ScreenSaverEngine    # Laucnh screen saver
-osascript -e "set Volume 0"  # Mute audio
-pmset displaysleepnow        # Display sleep
+$ open -a ScreenSaverEngine    # Launch screen saver
+$ osascript -e "set Volume 0"  # Mute audio
+$ pmset displaysleepnow        # Display sleep
 ```
 
 ## Uninstall
