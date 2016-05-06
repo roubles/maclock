@@ -1,6 +1,6 @@
 # maclock - Command Line OSX Screen Lock
 
-A simple bash script to lock your macs from the command line. 
+A simple bash script to lock your mac from the command line. 
 
 By default maclock will just launch the screen saver, but it can also mute the audio and put the display to sleep.
 
@@ -59,6 +59,20 @@ $ maclock -a
 $ maclock --all --quiet
 OR
 $ maclock -a -q
+```
+
+## Other options
+Mere mortals may get by with keyboard shortcuts such as:
+Ctrl-Shift-⏏ Eject (on older Macs),
+Ctrl-Shift-⌽ Power (on newer macs)
+
+Or, if you like to use the trackpad or mouse, you can use Hot Corners.
+
+Call me oldschool, but I like the command line. The commands that this script essentially encapsulates are:
+```
+open -a ScreenSaverEngine    # Laucnh screen saver
+osascript -e "set Volume 0"  # Mute audio
+pmset displaysleepnow        # Display sleep
 ```
 
 ## Uninstall
