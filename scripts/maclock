@@ -1,51 +1,68 @@
 #!/usr/bin/env bash
 
 printusage () {
-    echo "Usage: maclock [--mute] [--display] [--all]"
+    echo "Usage: maclock [-m] [-d] [-q] [-a]"
     echo ""
-    echo "       --mute    : mute the audio"
-    echo "       --display : sleep the display"
-    echo "       --all     : --mute and --display"
+    echo "       -m, --mute    : mute the audio"
+    echo "       -d, --display : sleep the display"
+    echo "       -q, --quiet   : no output"
+    echo "       -a, --all     : --mute and --display"
 }
+
+ALL=false
+SLEEP_DISPLAY=false
+MUTE=false
+QUIET=false
 
 for i in "$@"
 do
-case $i in
-    --help)
-    printusage
-    exit 1
-    ;;
-    --all)
-    ALL="YES"
-    shift
-    ;;
-    --display)
-    SLEEP_DISPLAY="YES"
-    shift
-    ;;
-    --mute)
-    MUTE="YES"
-    shift
-    ;;
-    *)
-    printusage
-    exit 1
-    ;;
-esac
+    case $i in
+        --help|-h)
+            printusage
+            exit 1
+            ;;
+        --all|-a)
+            ALL=true
+            shift
+            ;;
+        --display|-d)
+            SLEEP_DISPLAY=true
+            shift
+            ;;
+        --mute|-m)
+            MUTE=true
+            shift
+            ;;
+        --quiet|-q)
+            QUIET=true
+            shift
+            ;;
+        *)
+            printusage
+            exit 1
+            ;;
+    esac
 done
 
 # Launch screensaver
 open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app
 
 # Mute the audio
-if [[ "$ALL" == "YES" ]] || [[ "$MUTE" == "YES" ]] ; then
-    echo "Muting..."
-    osascript -e "set Volume 0"; osascript -e "get volume settings"
+if [[ $ALL = true ]] || [[ $MUTE = true ]] ; then
+    if [[ $QUIET = false ]]; then
+        echo "Muting..."
+    fi
+    osascript -e "set Volume 0"
+    if [[ $QUIET = false ]]; then
+        osascript -e "get volume settings"
+    fi
 fi
 
 # Sleep the display
-if [[ "$ALL" == "YES" ]] || [[ "$SLEEP_DISPLAY" == "YES" ]] ; then
-    echo "Display sleep..."
+if [[ $ALL = true ]] || [[ $SLEEP_DISPLAY = true ]] ; then
+    if [[ $QUIET = false ]]; then
+        echo "Display sleep..."
+    fi
     pmset displaysleepnow
 fi
 
