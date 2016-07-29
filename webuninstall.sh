@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# maclock CLI Installer
+# maclock CLI UNInstaller
 #
 # MIT LICENSE - Copyright (c) May 2015 Rouble Matta
 #
@@ -25,29 +25,6 @@
 APP_NAME='maclock'
 INSTALL_PATH="/usr/local/bin/$APP_NAME"
 
-function create_usrlocalbin() {
-    if [ ! -d /usr/local/bin/ ]; then
-        echo "Creating /usr/local/bin ..."
-        mkdir -p /usr/local/bin/ 
-    fi
-}
-
-function install_script() {
-    echo "Installing scripts in /usr/local/bin"
-    cp ./scripts/maclock $INSTALL_PATH
-    if [ ! -f $INSTALL_PATH ]; then
-        echo "Error installing script."
-        exit 4
-    fi
-}
-
-function chmod_script() {
-  chmod a+x $INSTALL_PATH
-}
-
-create_usrlocalbin
-install_script
-chmod_script
-echo 'Installation complete!'
-echo "Please execute the command: '$APP_NAME --help' in your terminal."
+rm -rf $INSTALL_PATH
+echo 'Un-Installation complete!'
 exit 0
