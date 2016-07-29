@@ -70,5 +70,5 @@ $ pmset displaysleepnow        # Display sleep
 
 ## Uninstall
 ```
-$ curl -sSL https://raw.github.com/roubles/maclock/master/webinstall.sh | bash
+$ curl -sSL https://raw.github.com/roubles/maclock/master/webuninstall.sh | bash
 ```
