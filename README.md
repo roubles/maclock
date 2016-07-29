@@ -15,15 +15,8 @@ Usage: maclock [-m] [-d] [-q] [-a]
 
 ## Install
 
-### Step 1 - Get code
 ```
-$ git clone https://github.com/roubles/maclock.git
-```
-
-### Step 2 - Install
-```
-$ cd maclock
-$ sudo ./install.sh
+curl -sSL https://raw.github.com/roubles/maclock/master/webinstall.sh | bash
 ```
 
 ## Run
@@ -77,6 +70,5 @@ $ pmset displaysleepnow        # Display sleep
 
 ## Uninstall
 ```
-$ cd maclock
-$ sudo ./uninstall.sh
+$ curl -sSL https://raw.github.com/roubles/maclock/master/webinstall.sh | bash
 ```
