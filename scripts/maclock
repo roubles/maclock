@@ -45,7 +45,7 @@ do
 done
 
 # Launch screensaver
-open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app
+open -a ScreenSaverEngine
 
 # Mute the audio
 if [[ $ALL = true ]] || [[ $MUTE = true ]] ; then

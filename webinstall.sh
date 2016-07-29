@@ -23,6 +23,7 @@
 # SOFTWARE.
 
 APP_NAME='maclock'
+URL='https://raw.githubusercontent.com/roubles/maclock/master/scripts/maclock'
 INSTALL_PATH="/usr/local/bin/$APP_NAME"
 
 function create_usrlocalbin() {
@@ -32,9 +33,9 @@ function create_usrlocalbin() {
     fi
 }
 
-function install_script() {
-    echo "Installing scripts in /usr/local/bin"
-    cp ./scripts/maclock $INSTALL_PATH
+function download_script() {
+    echo "Downloading script from: $URL..."
+    curl -sSL $URL > $INSTALL_PATH
     if [ ! -f $INSTALL_PATH ]; then
         echo "Error installing script."
         exit 4
@@ -46,7 +47,7 @@ function chmod_script() {
 }
 
 create_usrlocalbin
-install_script
+download_script
 chmod_script
 echo 'Installation complete!'
 echo "Please execute the command: '$APP_NAME --help' in your terminal."
