@@ -16,7 +16,7 @@ Usage: maclock [-m] [-d] [-q] [-a]
 ## Install
 
 ```
-curl -sSL https://raw.github.com/roubles/maclock/master/webinstall.sh | bash
+curl -sSL https://raw.github.com/roubles/maclock/master/webinstall.sh | sudo bash
 ```
 
 ## Run
@@ -70,5 +70,5 @@ $ pmset displaysleepnow        # Display sleep
 
 ## Uninstall
 ```
-$ curl -sSL https://raw.github.com/roubles/maclock/master/webuninstall.sh | bash
+$ curl -sSL https://raw.github.com/roubles/maclock/master/webuninstall.sh | sudo bash
 ```
